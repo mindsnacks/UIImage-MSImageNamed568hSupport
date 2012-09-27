@@ -31,7 +31,7 @@ static BOOL _isIphone5 = NO;
         NSString *imageExtension = [name pathExtension];
         NSString *imageNameWithoutExtension = [name stringByDeletingPathExtension];
 
-        NSString *tallerImageName = [NSString stringWithFormat:@"%@%@", imageNameWithoutExtension, k568hImageNamePrefix];
+        NSString *tallerImageName = [imageNameWithoutExtension stringByAppendingString:k568hImageNamePrefix];
 
         if (imageExtension.length > 0)
         {
