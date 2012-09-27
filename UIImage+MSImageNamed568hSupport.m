@@ -5,7 +5,7 @@
 //
 //
 
-#import "UIImage+iPhone5ImageNamed.h"
+#import "UIImage+MSImageNamed568hSupport.h"
 
 #define kIphone5ScreenHeight 568.0f
 #define k568hImageNamePrefix @"-568h"
