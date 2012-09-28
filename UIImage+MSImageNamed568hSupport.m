@@ -16,8 +16,8 @@ static BOOL _isIphone5 = NO;
 
 + (void)load
 {
-    CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    CGFloat screenHeight= MAX(screenSize.width, screenSize.height);
+    const CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    const CGFloat screenHeight = MAX(screenSize.width, screenSize.height);
 
     _isIphone5 = (screenHeight == kIphone5ScreenHeight);
 }
