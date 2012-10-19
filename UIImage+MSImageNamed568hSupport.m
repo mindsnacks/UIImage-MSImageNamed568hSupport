@@ -14,16 +14,16 @@ static BOOL _isIphone5 = NO;
 
 @implementation UIImage (MSImageNamed568hSupport)
 
-+ (void)load
-{
-    const CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    const CGFloat screenHeight = MAX(screenSize.width, screenSize.height);
-
-    _isIphone5 = (screenHeight == kIphone5ScreenHeight);
-}
-
 + (UIImage *)ms_imageNamed568hSupport:(NSString *)name
 {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        const CGSize screenSize = [UIScreen mainScreen].bounds.size;
+        const CGFloat screenHeight = MAX(screenSize.width, screenSize.height);
+
+        _isIphone5 = (screenHeight == kIphone5ScreenHeight);
+    });
+
     UIImage *image = nil;
 
     if (_isIphone5)
