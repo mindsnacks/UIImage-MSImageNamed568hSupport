@@ -11,18 +11,20 @@
 #define k568hImageNamePrefix @"-568h"
 
 static BOOL _isIphone5 = NO;
+static BOOL _calculatedScreenSize = NO;
 
 @implementation UIImage (MSImageNamed568hSupport)
 
 + (UIImage *)ms_imageNamed568hSupport:(NSString *)name
 {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    if (!_calculatedScreenSize)
+    {
         const CGSize screenSize = [UIScreen mainScreen].bounds.size;
         const CGFloat screenHeight = MAX(screenSize.width, screenSize.height);
 
         _isIphone5 = (screenHeight == kIphone5ScreenHeight);
-    });
+        _calculatedScreenSize = YES;
+    };
 
     UIImage *image = nil;
 
