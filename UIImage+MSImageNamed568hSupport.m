@@ -10,13 +10,16 @@
 #define kIphone5ScreenHeight 568.0f
 #define kIphone6PlusScreenHeight 736.0f
 #define kIphone6ScreenHeight 667.0f
+#define kIphoneXScreenHeight 812.0f
 #define k568hImageNamePrefix @"-568h"
 #define k736hImageNamePrefix @"-736h"
 #define k667hImageNamePrefix @"-667h"
+#define k812hImageNamePrefix @"-812h"
 
 static BOOL _isIphone5 = NO;
 static BOOL _isIphone6 = NO;
 static BOOL _isIphone6Plus = NO;
+static BOOL _isIphoneX = NO;
 static BOOL _calculatedScreenSize = NO;
 
 @implementation UIImage (MSImageNamed568hSupport)
@@ -31,6 +34,7 @@ static BOOL _calculatedScreenSize = NO;
         _isIphone5 = (screenHeight == kIphone5ScreenHeight);
         _isIphone6Plus = (screenHeight == kIphone6PlusScreenHeight);
         _isIphone6 = (screenHeight == kIphone6ScreenHeight);
+        _isIphoneX = (screenHeight == kIphoneXScreenHeight);
         _calculatedScreenSize = YES;
     };
 
@@ -42,6 +46,8 @@ static BOOL _calculatedScreenSize = NO;
         prefix = k736hImageNamePrefix;
     } else if (_isIphone6) {
         prefix = k667hImageNamePrefix;
+    } else if (_isIphoneX) {
+        prefix = k812hImageNamePrefix;
     }
 
     if (prefix)
@@ -55,7 +61,7 @@ static BOOL _calculatedScreenSize = NO;
         {
             tallerImageName = [tallerImageName stringByAppendingPathExtension:imageExtension];
         }
-
+    
         image = [self imageNamed:tallerImageName];
     }
 
